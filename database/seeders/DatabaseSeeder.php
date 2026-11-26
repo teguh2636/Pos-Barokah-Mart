@@ -1,0 +1,33 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\User;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+
+class DatabaseSeeder extends Seeder
+{
+    public function run(): void
+    {
+        // Membuat atau memperbarui akun Admin
+        User::updateOrCreate(
+            ['email' => 'admin@barokahmart.test'],
+            [
+                'name' => 'Admin Toko',
+                'password' => Hash::make('password'),
+                'role' => 'admin',
+            ]
+        );
+
+        // Membuat atau memperbarui akun Kasir
+        User::updateOrCreate(
+            ['email' => 'kasir@barokahmart.test'],
+            [
+                'name' => 'Kasir Rina',
+                'password' => Hash::make('password'),
+                'role' => 'kasir',
+            ]
+        );
+    }
+}
